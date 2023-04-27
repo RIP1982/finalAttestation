@@ -1,16 +1,16 @@
 package data;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.logging.Logger;
 
-public class Pet extends MansFriend {
+
+public class Pet extends MansFriend implements AutoCloseable {
     private int id;
-    private String animalClassification;
-    private String[] commands;
+    private ArrayList<String> commands;
 
-    public Pet(int id, String animalClassification, String animal, String name, String[] commands) {
+    public Pet(int id, String animal, String name, ArrayList<String> commands) {
         super(animal, name);
         this.id = id;
-        this.animalClassification = animalClassification;
         this.commands = commands;
     }
 
@@ -22,30 +22,27 @@ public class Pet extends MansFriend {
         this.id = id;
     }
 
-    public String getAnimalClassification() {
-        return animalClassification;
-    }
-
-    public void setAnimalClassification(String animalClassification) {
-        this.animalClassification = animalClassification;
-    }
-
-    public String[] getCommands() {
+    public ArrayList<String> getCommands() {
         return commands;
     }
 
-    public void setCommands(String[] commands) {
+    public void setCommands(ArrayList<String> commands) {
         this.commands = commands;
     }
 
     @Override
     public String toString() {
-        return "Pet{" +
+        return "\n" + "Pet{" +
                 "id=" + id +
-                ", animalClassification='" + animalClassification + '\'' +
                 ", animal='" + super.getAnimal() + '\'' +
                 ", name='" + super.getName() + '\'' +
-                ", commands=" + Arrays.toString(commands) +
+                ", commands=" + commands +
                 '}';
+    }
+
+    @Override
+    public void close() throws Exception {
+        Logger logger = Logger.getAnonymousLogger();
+        logger.info("Counter closed");
     }
 }

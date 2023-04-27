@@ -19,8 +19,6 @@ public class PetsRegistry {
 
     @Override
     public String toString() {
-        return "PetsRegistry{" +
-                "petsList=" + petsList +
-                '}';
+        return "PetsRegistry:" + petsList;
     }
 }
