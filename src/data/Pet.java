@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 
-public class Pet extends MansFriend implements AutoCloseable {
+public class Pet extends MansFriend {
     private int id;
     private ArrayList<String> commands;
 
@@ -38,11 +38,5 @@ public class Pet extends MansFriend implements AutoCloseable {
                 ", name='" + super.getName() + '\'' +
                 ", commands=" + commands +
                 '}';
-    }
-
-    @Override
-    public void close() throws Exception {
-        Logger logger = Logger.getAnonymousLogger();
-        logger.info("Counter closed");
     }
 }
