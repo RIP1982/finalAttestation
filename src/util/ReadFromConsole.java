@@ -7,25 +7,20 @@ import view.View;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Logger;
+
 
 public class ReadFromConsole {
     public static Pet readFromConsole() {
         View ui = new ConsoleView();
-        try (Counter counter = new Counter()){
-            int id = 0;
-            System.out.printf("animal: ");
-            String animal = (new Scanner(System.in).nextLine());
-            System.out.printf("name: ");
-            String name = (new Scanner(System.in).nextLine());
-            ArrayList<String> command = setCommand();
-            if (!animal.isEmpty() || !name.isEmpty() || !command.isEmpty()) {
-                Pet pet = new Pet(id, animal, name, command);
-                return pet;
-            }
-        } catch (Exception e) {
-            Logger logger = Logger.getAnonymousLogger();
-            logger.info("You entered wrong data!");
+        int id = 0;
+        System.out.printf("animal: ");
+        String animal = (new Scanner(System.in).nextLine());
+        System.out.printf("name: ");
+        String name = (new Scanner(System.in).nextLine());
+        ArrayList<String> command = setCommand();
+        if (animal.length() != 0 && name.length() != 0 && command.size() != 0) {
+            Pet pet = new Pet(id, animal, name, command);
+            return pet;
         }
         return null;
     }
